@@ -1,12 +1,23 @@
 const { default: mongoose } = require("mongoose");
-const mongoose = require("mongoose");
+
+const PrescribedItem = mongoose.Schema({
+    name: { type: String, required: true },
+    quantity: { type: Number, required: true }
+})
 
 const PrescriptionSchema = mongoose.Schema({
-    user: { type: new mongoose.Types.ObjectId, required: true },
-    doctor: { type: new mongoose.Types.ObjectId, required: true },
+    user: { type: mongoose.Types.ObjectId, required: true },
+    doctor: { type: mongoose.Types.ObjectId, required: true },
+    appointment: { type: mongoose.Types.ObjectId, required: true },
     items: {
-        type: Array,
-        required: true
+        type: [PrescribedItem],
+        validate: {
+            validator: function (value) {
+                console.log("Here", value)
+              return value.length < 1 ? false : true;
+            },
+            message: 'Prescription length should be greater than 0',
+          },
     }
 }, { timestamp: true });
 

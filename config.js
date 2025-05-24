@@ -3,7 +3,8 @@ const USERS = {
     ATTENDER: 'attender',
     RECEPTIONIST: 'receptionist',
     MANAGER: 'manager',
-    DOCTOR: 'doctor'
+    DOCTOR: 'doctor',
+    PHARMACIST: 'pharmacist'
 };
 
 const GENDER  = {
@@ -23,9 +24,16 @@ const SYSTEM_USERS = [
     USERS.DOCTOR
 ]
 
+const PRESCRIPTION_PROVIDERS = [
+    USERS.DOCTOR,
+    USERS.MANAGER,
+    USERS.PHARMACIST
+];
+
 module.exports = {
     USERS,
     OUT_USER,
     SYSTEM_USERS,
-    GENDER
+    GENDER,
+    PRESCRIPTION_PROVIDERS
 };

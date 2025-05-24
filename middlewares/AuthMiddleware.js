@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { SECRET_KEY } = require("../utils");
-const { SYSTEM_USERS } = require("../config");
-
+const { SYSTEM_USERS, PRESCRIPTION_PROVIDERS } = require("../config");
 
 function checkTokenValid(req, res, next) {
     try {
@@ -42,6 +41,8 @@ async function checkUserIsSystemUser(req, res, next) {
         });
     }
 }
+
+
 
 module.exports = {
     checkTokenValid,
